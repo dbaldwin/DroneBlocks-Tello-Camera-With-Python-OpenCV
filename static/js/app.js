@@ -11,8 +11,8 @@ $(document).ready(function() {
         post("/send_command", JSON.stringify({"command": "takeoff"}));
     });
 
-    $("#up").click(function() {
-        post("/send_command", JSON.stringify({"command": "up 20"}));
+    $("#forward").click(function() {
+        post("/send_command", JSON.stringify({"command": "forward 20"}));
     });
 
     $("#left").click(function() {
@@ -23,22 +23,22 @@ $(document).ready(function() {
         post("/send_command", JSON.stringify({"command": "right 20"}));
     });
 
-    $("#down").click(function() {
-        post("/send_command", JSON.stringify({"command": "down 20"}));
+    $("#backward").click(function() {
+        post("/send_command", JSON.stringify({"command": "back 20"}));
     });
-    
+
     $("#land").click(function() {
         post("/send_command", JSON.stringify({"command": "land"}));
     });
-
-    function post(url, command) {
-        $.ajax({
-            url: url,
-            data: command,
-            type: 'POST',
-            contentType: 'application/json'
-        }).done(function(data){
-            console.log("done");
-        });
-    }
 });
+
+function post(url, command) {
+    $.ajax({
+        url: url,
+        data: command,
+        type: 'POST',
+        contentType: 'application/json'
+    }).done(function(data){
+        console.log("done");
+    });
+}

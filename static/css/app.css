@@ -5,8 +5,13 @@
 }
 
 .controls {
-    width: 400px;
+    width: 200px;
 }
+
 .controls td {
     /*border: 1px solid #000;*/
+}
+
+.border {
+    border: 1px solid #ff0000;
 }

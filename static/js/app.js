@@ -30,6 +30,10 @@ $(document).ready(function() {
     $("#land").click(function() {
         post("/send_command", JSON.stringify({"command": "land"}));
     });
+
+    $("#take_photo").click(function() {
+        $.get("/take_photo", function(data){});
+    });
 });
 
 function post(url, command) {

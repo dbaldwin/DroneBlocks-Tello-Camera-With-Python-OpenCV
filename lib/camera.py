@@ -1,4 +1,5 @@
 import cv2
+import os
 from lib.aruco import Aruco
 
 # Camera class so we can access Tello's camera
@@ -25,6 +26,11 @@ class Camera(object):
         _, jpeg = cv2.imencode('image.jpg', frame)
 
         return jpeg.tostring()
+
+    def take_photo(self):
+        path = os.getcwd()
+        cv2.imwrite(path + "/photos/test.jpg", self.frame)
+        return "success"
 
     def __del__(self):
         self.cap.release()

@@ -1,3 +1,4 @@
+import os
 from flask import Flask, Response, render_template, request, jsonify
 from lib.camera import Camera
 from lib.udp import UDP
@@ -6,7 +7,7 @@ app = Flask(__name__)
 
 # Set to true if doing ArUco detection
 # Set to false to get camera stream with no detection enabled
-detect_aruco_markers = True
+detect_aruco_markers = False
 
 @app.route("/")
 def main():
@@ -26,7 +27,12 @@ def get_frame(camera):
 def send_command():
     command = request.json['command']
     udp.send_command(command)
-    return "nothing"
+    return ""
+
+@app.route('/take_photo')
+def take_photo():
+    camera.take_photo()
+    return ""
 
 if __name__ == "__main__":
     udp = UDP()

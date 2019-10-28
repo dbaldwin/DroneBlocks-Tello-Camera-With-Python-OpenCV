@@ -1,0 +1,12 @@
+#video {
+    background-color: #000000;
+    width: 480px;
+    height: 360px;
+}
+
+.controls {
+    width: 400px;
+}
+.controls td {
+    /*border: 1px solid #000;*/
+}

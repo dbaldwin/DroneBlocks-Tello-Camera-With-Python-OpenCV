@@ -3,9 +3,72 @@
  
 <head>
     <title>Tello</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/static/css/lib/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css" />
+    <!-- UIkit JS -->
+    <script src="/static/js/lib/uikit.min.js"></script>
+    <script src="/static/js/lib/uikit-icons.min.js"></script>
+    <script src="/static/js/lib/jquery-3.4.1.min.js"></script>
 </head>
  
 <body>
-    <img class="" src="/video_stream" />
+    <div id="header">
+
+    </div>
+    <div>
+        <img id="video" src="/video_stream" />
+
+        <table class="uk-table controls">
+            <tbody>
+                <thead>
+                    <tr><td colspan="3" align="center"><span class="uk-label">Control Pad</span></td></tr>
+                </thead>
+                <tr>
+                    <td></td>
+                    <td><button id="up" class="uk-button uk-button-primary" uk-icon="icon: triangle-up; ratio: 8"></button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button id="left" class="uk-button uk-button-primary" uk-icon="icon: triangle-left; ratio: 8"></button></td>
+                    <td><input class="uk-input" type="text" placeholder="20"> in</td>
+                    <td><button id="right" class="uk-button uk-button-primary" uk-icon="icon: triangle-right; ratio: 8"></button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="down" class="uk-button uk-button-primary" uk-icon="icon: triangle-down; ratio: 8"></button></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <span uk-icon="icon: triangle-up; ratio: 6"></span>
+        </div>
+        <div class="uk-column-1-2">
+            <span uk-icon="icon: triangle-left; ratio: 6"></span>
+            <input type="text" value="50" />
+            <span uk-icon="icon: triangle-right; ratio: 6"></span>
+        </div>
+        <div>
+            <span uk-icon="icon: triangle-down; ratio: 6"></span>
+        </div>
+        <button class="uk-button uk-button-primary" id="connect">Connect</button>
+        <button class="uk-button uk-button-primary" id="streamon">Stream On</button>
+        <button class="uk-button uk-button-primary" id="streamoff">Stream Off</button>
+        <button class="uk-button uk-button-primary" id="takeoff">Takeoff</button>
+        <button class="uk-button uk-button-primary" id="land">Land</button>
+
+       
+        <!--<button class="uk-button uk-button-primary">Start Stream</button>
+        <button class="uk-button uk-button-primary">Stop Stream</button>
+        <button class="uk-button uk-button-primary">Fly Forward</button>
+        <button class="uk-button uk-button-primary">Fly Left</button>
+        <button class="uk-button uk-button-primary">Fly Right</button>
+        <button class="uk-button uk-button-primary">Fly Backward</button>
+        <button class="uk-button uk-button-primary">Fly Up</button>
+        <button class="uk-button uk-button-primary">Fly Down</button>-->
+    </div>
+    <script src="../static/js/app.js"></script>
 </body>
 </html>

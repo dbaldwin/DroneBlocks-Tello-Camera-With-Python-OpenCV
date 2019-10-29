@@ -15,7 +15,7 @@ def main():
 
 @app.route('/video_stream')
 def video_feed():
-    camera = Camera(detect_aruco_markers)
+    camera.get_video()
     return Response(get_frame(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def get_frame(camera):
@@ -35,5 +35,6 @@ def take_photo():
     return ""
 
 if __name__ == "__main__":
+    camera = Camera(detect_aruco_markers)
     udp = UDP()
     app.run()

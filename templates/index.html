@@ -43,41 +43,64 @@
 
     <div class="uk-padding-small">
         <button class="uk-button uk-button-primary uk-button-small" id="takeoff">Takeoff</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="flip_forward">Flip Forward</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="flip_backward">Flip Backward</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="flip_left">Flip Left</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="flip_right">Flip Right</button>
         <button class="uk-button uk-button-primary uk-button-small uk-align-right" id="land">Land</button>
     </div>
 
-    <div class="uk-grid uk-padding">
+    <div class="uk-grid">
 
-        <div class="uk-width-1-2">
+        <div class="uk-width-1-3">
             <img id="video" src="/video_stream" />
             <div class="uk-padding-small">
                 <button class="uk-button uk-button-primary" id="streamon">Stream On</button>
                 <button class="uk-button uk-button-primary" id="streamoff">Stream Off</button>
                 <button class="uk-button uk-button-primary" id="take_photo">Take Photo</button>
             </div>
-        </div>
-
-        <div class="uk-width-1-2">
-            <table class="uk-table">
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td><button id="up" class="uk-button uk-button-primary" uk-icon="icon: triangle-up; ratio: 4"></button></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><button id="left" class="uk-button uk-button-primary" uk-icon="icon: triangle-left; ratio: 4"></button></td>
-                        <td><input class="uk-input" type="text" placeholder="20" style="width: 50px" /> in</td>
-                        <td><button id="right" class="uk-button uk-button-primary" uk-icon="icon: triangle-right; ratio: 4"></button></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><button id="down" class="uk-button uk-button-primary" uk-icon="icon: triangle-down; ratio: 4"></button></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        </div>        
+            
+        <table class="uk-table uk-width-1-3">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><button id="fly_up" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Up</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button id="yaw_left" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Yaw Left</button></td>
+                    <td><input class="uk-input" type="text" placeholder="20" style="width: 50px" /> in</td>
+                    <td><button id="yaw_right" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Yaw Right</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="fly_down" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Down</button></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <table class="uk-table uk-width-1-3">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><button id="fly_forward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Forward</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button id="fly_left" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Left</button></td>
+                    <td><input class="uk-input" type="text" placeholder="20" style="width: 50px" /> in</td>
+                    <td><button id="fly_right" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Right</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="fly_backward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap">Fly Backward</button></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    
     </div>
     <script src="../static/js/app.js"></script>
     <script src="../static/js/keyboard.js"></script>

@@ -7,24 +7,60 @@ $(document).ready(function() {
         post("/send_command", JSON.stringify({"command": "streamon"}));
     });
 
+    $("#streamoff").click(function() {
+        post("/send_command", JSON.stringify({"command": "streamoff"}));
+    });
+
     $("#takeoff").click(function() {
         post("/send_command", JSON.stringify({"command": "takeoff"}));
     });
 
-    $("#forward").click(function() {
+    $("#fly_up").click(function() {
+        post("/send_command", JSON.stringify({"command": "up 20"}));
+    });
+
+    $("#yaw_left").click(function() {
+        post("/send_command", JSON.stringify({"command": "ccw 90"}));
+    });
+
+    $("#yaw_right").click(function() {
+        post("/send_command", JSON.stringify({"command": "cw 90"}));
+    });
+
+    $("#fly_down").click(function() {
+        post("/send_command", JSON.stringify({"command": "down 20"}));
+    });
+
+    $("#fly_forward").click(function() {
         post("/send_command", JSON.stringify({"command": "forward 20"}));
     });
 
-    $("#left").click(function() {
+    $("#fly_left").click(function() {
         post("/send_command", JSON.stringify({"command": "left 20"}));
     });
 
-    $("#right").click(function() {
+    $("#fly_right").click(function() {
         post("/send_command", JSON.stringify({"command": "right 20"}));
     });
 
-    $("#backward").click(function() {
+    $("#fly_backward").click(function() {
         post("/send_command", JSON.stringify({"command": "back 20"}));
+    });
+
+    $("#flip_foward").click(function() {
+        post("/send_command", JSON.stringify({"command": "flip l"}));
+    });
+
+    $("#flip_backward").click(function() {
+        post("/send_command", JSON.stringify({"command": "flip b"}));
+    });
+
+    $("#flip_left").click(function() {
+        post("/send_command", JSON.stringify({"command": "flip l"}));
+    });
+
+    $("#flip_right").click(function() {
+        post("/send_command", JSON.stringify({"command": "flip r"}));
     });
 
     $("#land").click(function() {

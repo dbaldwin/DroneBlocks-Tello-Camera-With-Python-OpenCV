@@ -12,6 +12,9 @@ class Camera(object):
         self.cap = None
         self.detect_aruco_markers = detect_aruco_markers
         self.frame_size = (480, 360)
+
+        # For recording video
+        self.vout = cv2.VideoWriter()
         
         if self.detect_aruco_markers is True:
             self.aruco = Aruco()
@@ -37,6 +40,9 @@ class Camera(object):
         filename = time.strftime("%Y%m%d-%H%M%S")
         cv2.imwrite(path + "/photos/" + filename + ".jpg", self.frame)
         return "success"
+
+    def record_video(self):
+        fourcc = cv2.cv.CV_FOURCC('m', 'p', '4', 'v')
 
     def __del__(self):
         self.cap.release()

@@ -2,6 +2,7 @@ import os
 from flask import Flask, Response, render_template, request, jsonify
 from lib.camera import Camera
 from lib.udp import UDP
+from lib.telemetry import Telemetry
 
 app = Flask(__name__)
 
@@ -34,7 +35,22 @@ def take_photo():
     camera.take_photo()
     return ""
 
+@app.route('/get_telemetry')
+def get_telemetry():
+    data = telemetry.receive_telemetry()
+    return data
+
 if __name__ == "__main__":
+
+    # Camera for stream, photo, video
     camera = Camera(detect_aruco_markers)
+
+    # Udp for sending commands
     udp = UDP()
+
+    # Handle Tello's state information
+    telemetry = Telemetry()
+    telemetry.receive_telemetry()
+
+    # Fire up the app
     app.run()

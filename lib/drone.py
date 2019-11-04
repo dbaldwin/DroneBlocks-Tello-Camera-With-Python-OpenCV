@@ -4,6 +4,7 @@ class Drone(object):
 
     def __init__(self, is_aruco_tracking_enabled=False):
         self.is_connected = False
+        self.is_streaming = False
         self.is_aruco_tracking_enabled = is_aruco_tracking_enabled
         self.is_recording_video = False
         self.is_running_droneblocks_mission = False

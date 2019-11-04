@@ -47,7 +47,17 @@ def send_command():
 @app.route('/take_photo')
 def take_photo():
     camera.take_photo()
-    return
+    return drone.toJSON()
+
+@app.route('/start_recording')
+def start_recording():
+    camera.start_recording()
+    return drone.toJSON()
+
+@app.route('/stop_recording')
+def stop_recording():
+    camera.stop_recording()
+    return drone.toJSON()
 
 @app.route('/get_telemetry')
 def get_telemetry():
@@ -55,7 +65,7 @@ def get_telemetry():
         data = telemetry.get_telemetry_data()
         return jsonify(data)
     else:
-        return
+        return ""
 
 if __name__ == "__main__":
 

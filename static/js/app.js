@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    var is_recording = false;
+
     $("#connect").click(function() {
         $.getJSON("/connect", {}, function(response) {
             if (response.is_connected == true) {
@@ -11,10 +14,12 @@ $(document).ready(function() {
 
     $("#streamon").click(function() {
         post("/send_command", JSON.stringify({"command": "streamon"}));
+        $("#video").attr("src", "/video_stream");
     });
 
     $("#streamoff").click(function() {
         post("/send_command", JSON.stringify({"command": "streamoff"}));
+        $("#video").attr("src", "/static/img/blank_video.png");
     });
 
     $("#takeoff").click(function() {
@@ -75,6 +80,19 @@ $(document).ready(function() {
 
     $("#take_photo").click(function() {
         $.get("/take_photo", function(data){});
+    });
+
+    $("#record_video").click(function() {
+
+        if (!is_recording) {
+            $.get("/start_recording", function(data){});
+            $("#record_video").html("Stop Recording");
+        } else {
+            $.get("/stop_recording", function(data){});
+            $("#record_video").html("Start Recording");
+        }
+
+        is_recording = !is_recording;
     });
 
     // Populate Tello's state information

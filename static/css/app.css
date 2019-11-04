@@ -2,6 +2,7 @@
     background-color: #000000;
     width: 480px;
     height: 360px;
+    border: 1px solid #000000;
 }
 
 .controls {

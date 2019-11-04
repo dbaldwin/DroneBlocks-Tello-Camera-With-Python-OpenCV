@@ -1,6 +1,12 @@
 $(document).ready(function() {
     $("#connect").click(function() {
-        post("/send_command", JSON.stringify({"command": "command"}));
+        $.getJSON("/connect", {}, function(response) {
+            if (response.is_connected == true) {
+                // This will light up all the buttons
+                $('button').prop('disabled', function(i, v) { return !v; });
+            }
+        });
+        
     });
 
     $("#streamon").click(function() {
@@ -70,6 +76,20 @@ $(document).ready(function() {
     $("#take_photo").click(function() {
         $.get("/take_photo", function(data){});
     });
+
+    // Populate Tello's state information
+    setInterval(function() {
+        $.getJSON("/status", {}, function(response) {
+            if (response.battery != null) {
+                $("#battery").text(response.battery + "%");
+                $("#altitude").text(response.altitude + " cm");
+                $("#tof").text(response.tof + " cm");
+                $("#roll").text(response.roll + "°");
+                $("#pitch").text(response.pitch + "°");
+                $("#yaw").text(response.yaw + "°");
+            }
+        });
+    }, 500);
 });
 
 function post(url, command) {

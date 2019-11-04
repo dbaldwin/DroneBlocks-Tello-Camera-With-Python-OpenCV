@@ -3,12 +3,9 @@ from flask import Flask, Response, render_template, request, jsonify
 from lib.camera import Camera
 from lib.udp import UDP
 from lib.telemetry import Telemetry
+from lib.drone import Drone
 
 app = Flask(__name__)
-
-# Set to true if doing ArUco detection
-# Set to false to get camera stream with no detection enabled
-detect_aruco_markers = False
 
 @app.route("/")
 def main():
@@ -24,32 +21,56 @@ def get_frame(camera):
         frame = camera.get_frame()
         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
+@app.route("/connect")
+def connect():
+    status = udp.send_command("command")
+
+    print("Connection status is: ", status)
+
+    if status == "ok":
+        drone.is_connected = True
+    else:
+        drone.is_connected = False
+    
+    return drone.toJSON()
+
+@app.route("/status")
+def status():
+    return drone.toJSON()
+
 @app.route('/send_command', methods=['POST'])
 def send_command():
     command = request.json['command']
-    udp.send_command(command)
-    return ""
+    response = udp.send_command(command)
+    return response
 
 @app.route('/take_photo')
 def take_photo():
     camera.take_photo()
-    return ""
+    return
 
 @app.route('/get_telemetry')
 def get_telemetry():
-    data = telemetry.receive_telemetry()
-    return data
+    if drone.is_connected:
+        data = telemetry.get_telemetry_data()
+        return jsonify(data)
+    else:
+        return
 
 if __name__ == "__main__":
 
+    # Initialize the drone class
+    drone = Drone()
+
     # Camera for stream, photo, video
-    camera = Camera(detect_aruco_markers)
+    camera = Camera(drone)
 
     # Udp for sending commands
     udp = UDP()
+    udp.receive_response()
 
     # Handle Tello's state information
-    telemetry = Telemetry()
+    telemetry = Telemetry(drone)
     telemetry.receive_telemetry()
 
     # Fire up the app

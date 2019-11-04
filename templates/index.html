@@ -17,12 +17,12 @@
     <!--HEADER-->
     <header id="top-head">
         <div class="uk-container uk-container-expand uk-background-primary">
-            <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250">
+            <nav class="uk-navbar uk-light">
                 <div class="uk-navbar-left">
                     <div class="uk-navbar-item">
                         <a class="uk-logo" href="#"><img class="custom-logo" src="/static/img/db_logo.png" width="200" /></a>
                     </div>
-                    <ul class="uk-navbar-nav uk-visible@m">
+                    <ul class="uk-navbar-nav uk-visible@s">
                         <li><a>Battery:&nbsp;<span id="battery">-</span></a></li>
                         <li><a>Altitude:&nbsp;<span id="altitude">-</span></a></li>
                         <li><a>ToF:&nbsp;<span id="tof">-</span></a></li>
@@ -41,15 +41,19 @@
     </header>
     <!--/HEADER-->
 
+    <div>
+        We need speed
+    </div>
+
     <div class="uk-padding-small">
-        <button class="uk-button uk-button-primary uk-button-small" id="takeoff">Takeoff</button>
-        <button class="uk-button uk-button-primary uk-button-small" id="land">Land</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="takeoff" disabled>Takeoff</button>
+        <button class="uk-button uk-button-primary uk-button-small" id="land" disabled>Land</button>
 
         <span class="uk-align-right">
-            <button class="uk-button uk-button-primary uk-button-small" id="flip_forward">Flip Forward</button>
-            <button class="uk-button uk-button-primary uk-button-small" id="flip_backward">Flip Backward</button>
-            <button class="uk-button uk-button-primary uk-button-small" id="flip_left">Flip Left</button>
-            <button class="uk-button uk-button-primary uk-button-small" id="flip_right">Flip Right</button>
+            <button class="uk-button uk-button-primary uk-button-small" id="flip_forward" disabled>Flip Forward</button>
+            <button class="uk-button uk-button-primary uk-button-small" id="flip_backward" disabled>Flip Backward</button>
+            <button class="uk-button uk-button-primary uk-button-small" id="flip_left" disabled>Flip Left</button>
+            <button class="uk-button uk-button-primary uk-button-small" id="flip_right" disabled>Flip Right</button>
         </span>
     </div>
 
@@ -59,10 +63,10 @@
             <img id="video" src="/video_stream" />
 
             <div class="uk-padding-small">
-                <button class="uk-button uk-button-primary uk-button-small" id="streamon">Stream On</button>
-                <button class="uk-button uk-button-primary uk-button-small" id="streamoff">Stream Off</button>
-                <button class="uk-button uk-button-primary uk-button-small" id="take_photo">Take Photo</button>
-                <button class="uk-button uk-button-primary uk-button-small" id="record_video">Record Video</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="streamon" disabled>Stream On</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="streamoff" disabled>Stream Off</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="take_photo" disabled>Take Photo</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="record_video" disabled>Record Video</button>
             </div>
 
             <div class="uk-flex-center uk-padding" uk-grid>
@@ -71,17 +75,17 @@
                         <tbody>
                             <tr>
                                 <td></td>
-                                <td><button id="fly_up" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Fly Up; pos: top">▲</button></td>
+                                <td><button id="fly_up" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Fly Up; pos: top" disabled>▲</button></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><button id="yaw_left" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Yaw Left; pos: left">◀</button></td>
+                                <td><button id="yaw_left" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Yaw Left; pos: left" disabled>◀</button></td>
                                 <td></td>
-                                <td><button id="yaw_right" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Yaw Right; pos: right">▶</button></td>
+                                <td><button id="yaw_right" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Yaw Right; pos: right" disabled>▶</button></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><button id="fly_down" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Fly Down; pos: bottom">▼</button></td>
+                                <td><button id="fly_down" class="uk-button uk-button-primary uk-text-nowrap uk-button-small" uk-tooltip="title: Fly Down; pos: bottom" disabled>▼</button></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -92,17 +96,17 @@
                         <tbody>
                             <tr>
                                 <td></td>
-                                <td><button id="fly_forward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Forward; pos: top">▲</button></td>
+                                <td><button id="fly_forward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Forward; pos: top" disabled>▲</button></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><button id="fly_left" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Left; pos: left">◀</button></td>
+                                <td><button id="fly_left" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Left; pos: left" disabled>◀</button></td>
                                 <td><input class="uk-input" type="text" placeholder="20" style="width: 50px" /> in</td>
-                                <td><button id="fly_right" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Right; pos: right">▶</button></td>
+                                <td><button id="fly_right" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Right; pos: right" disabled>▶</button></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><button id="fly_backward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Down; pos: bottom">▼</button></td>
+                                <td><button id="fly_backward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Down; pos: bottom" disabled>▼</button></td>
                                 <td></td>
                             </tr>
                         </tbody>

@@ -12,9 +12,13 @@ class UDP(object):
 
     def send_command(self, command):
         try:
+            print("Sending command: ", command.encode())
             self.sock.sendto(command.encode(), self.tello_address)
         except Exception as e:
             print ("Error sending: " + str(e))
+
+        print("Response is: ", self.tello_response)
+        return self.tello_response
 
     def receive_response(self):
         self.sock.bind(self.local_address)
@@ -24,7 +28,6 @@ class UDP(object):
                 try:
                     self.tello_response, _ = self.sock.recvfrom(128)
                     self.tello_response = self.tello_response.decode(encoding="utf-8")
-                    print(self.tello_response)
                 except Exception as e:
                     print("Error receiving: " + str(e))
                     break

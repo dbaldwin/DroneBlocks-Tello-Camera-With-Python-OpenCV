@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Response, render_template, request, jsonify
+from flask import Flask, Response, render_template, request, jsonify, send_from_directory
 from lib.camera import Camera
 from lib.udp import UDP
 from lib.telemetry import Telemetry
@@ -67,10 +67,20 @@ def get_telemetry():
     else:
         return ""
 
+# So that we can load DroneBlocks in an iframe
+static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'droneblocks/dist')
+@app.route('/droneblocks/<path:path>', methods=['GET'])
+def droneblocks(path):
+    if not os.path.isfile(os.path.join(static_file_dir, path)):
+        path = os.path.join(path, 'tello.html')
+
+    return send_from_directory(static_file_dir, path)
+
+
 if __name__ == "__main__":
 
     # Initialize the drone class
-    drone = Drone()
+    drone = Drone(is_aruco_tracking_enabled=True)
 
     # Camera for stream, photo, video
     camera = Camera(drone)

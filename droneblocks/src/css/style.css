@@ -1,0 +1,69 @@
+.pt-20{
+    padding-top: 20px!important;
+}
+
+#d1, #d2, #d3, #saveMission, #myMissions, #logout, #saveMissionAs{
+    display: none;
+}
+
+.missions-table td:nth-child(4){
+    display: none;
+}
+
+@media only screen and (min-width: 601px){
+    .container{
+        width: 95%;
+    }
+}
+
+.missions-table td button{
+    padding: 0 16px;
+    height: 30px;
+    line-height: 30px;
+}
+
+@media only screen and (max-width: 991px){
+    .missions-table td:nth-child(2) div{
+        max-width: 330px!important;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 768px){
+    .missions-table{
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .missions-table td:nth-child(2){
+        width: 100%!important;
+    }
+
+    .missions-table td:nth-child(4){
+        display: block;
+    }
+
+    .missions-table td:nth-child(3){
+        display: none;
+    }
+
+    .missions-table td:first-child,
+    .missions-table th:first-child{
+        display: none;
+    }
+
+    .missions-table td button{
+        padding: 0 6px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .missions-table td button i{
+        font-size: 14px;
+    }
+
+    .missions-table td, .missions-table th{
+        white-space: nowrap;
+    }
+}

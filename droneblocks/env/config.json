@@ -1,0 +1,7 @@
+{
+    "apiKey": "AIzaSyAGgqla_TWV4wVgaQ87HG3VDT0igLA8KhU",
+    "authDomain": "droneblocks-staging.firebaseapp.com",
+    "databaseURL": "https://droneblocks-staging.firebaseio.com",
+    "projectId": "droneblocks-staging",
+    "storageBucket": "droneblocks-staging.appspot.com"
+}

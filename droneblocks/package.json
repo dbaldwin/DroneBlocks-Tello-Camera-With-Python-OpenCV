@@ -1,0 +1,45 @@
+{
+  "name": "droneblocks-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "NODE_ENV=dev gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbaldwin/DroneBlocks-Web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbaldwin/DroneBlocks-Web/issues"
+  },
+  "homepage": "https://github.com/dbaldwin/DroneBlocks-Web#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "css-loader": "^3.2.0",
+    "gulp": "^3.9.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.0.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.39.3",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "firebase": "^6.4.2",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
+    "i": "^0.3.6",
+    "jquery": "^3.4.1",
+    "materialize-css": "^1.0.0",
+    "moment": "^2.24.0",
+    "npm": "^6.11.2",
+    "vue": "^2.6.10"
+  }
+}

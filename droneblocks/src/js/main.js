@@ -57,28 +57,11 @@ const bind = () => {
         code += Blockly.JavaScript.workspaceToCode(blockly.workspace);
         code = eval(code);
 
-        var os = helpers.getMobileOS();
         
-        if(os == 'iOS') {
-            
-            window.webkit.messageHandlers.observe.postMessage(code);
-            
-        } else if (os == 'Android') {
+        // Post to main window from iFrame
+        // This calls launchMission in app.js
+        parent.launchMission(code);
         
-            Android.confirmMission(code);
-            
-        } else if (aircraft == "DJI") {
-            
-            $("#mapPreviewModal").html("<iframe src='map_preview.html?code=" + escape(code) + "' width='100%' height='100%'></iframe>");
-            $("#mapPreviewModal").openModal();
-        
-        // Chrome App case
-        }  else {
-        
-            // Appwindow is so we can post to the chrome app
-            appWindow.postMessage(code, appOrigin);
-        
-        }
     });
 
     $("#showCode").click(() => {

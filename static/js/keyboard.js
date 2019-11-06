@@ -22,7 +22,7 @@ $(document).keydown(function(e) {
         break;
 
         case 65: // A key for yaw left
-        post("/send_command", JSON.stringify({"command": "ccw 90"}));
+        post("/send_command", JSON.stringify({"command": "ccw " + $("#yaw_slider").val()}));
         break;
 
         case 83: // S key for fly down
@@ -30,7 +30,7 @@ $(document).keydown(function(e) {
         break;
 
         case 68: // D key for yaw right
-        post("/send_command", JSON.stringify({"command": "cw 90"}));
+        post("/send_command", JSON.stringify({"command": "cw " + $("#yaw_slider").val()}));
         break;
 
         default: return;

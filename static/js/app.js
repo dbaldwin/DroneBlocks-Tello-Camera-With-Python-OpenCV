@@ -31,11 +31,11 @@ $(document).ready(function() {
     });
 
     $("#yaw_left").click(function() {
-        post("/send_command", JSON.stringify({"command": "ccw 90"}));
+        post("/send_command", JSON.stringify({"command": "ccw " + $("#yaw_slider").val()}));
     });
 
     $("#yaw_right").click(function() {
-        post("/send_command", JSON.stringify({"command": "cw 90"}));
+        post("/send_command", JSON.stringify({"command": "cw " + $("#yaw_slider").val()}));
     });
 
     $("#fly_down").click(function() {
@@ -108,6 +108,13 @@ $(document).ready(function() {
             }
         });
     }, 500);
+
+
+    // Listen for yaw and distance changes on range inputs
+    $(document).on('input', '#yaw_slider', function() {
+        $("#yaw_angle").text($("#yaw_slider").val());
+    });
+
 });
 
 function post(url, command) {
@@ -117,6 +124,6 @@ function post(url, command) {
         type: 'POST',
         contentType: 'application/json'
     }).done(function(data){
-        console.log("done");
+        //
     });
 }

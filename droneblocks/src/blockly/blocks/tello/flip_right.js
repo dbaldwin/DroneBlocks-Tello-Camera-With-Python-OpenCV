@@ -9,7 +9,7 @@ Blockly.Blocks['flip_right'] = {
         "message0": "flip right",
         "nextStatement": true,
         "previousStatement": true,
-        "colour": "#64c2d9"
+        "colour": "#E9C46A"
       });
   }
 };

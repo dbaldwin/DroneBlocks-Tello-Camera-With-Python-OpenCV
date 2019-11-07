@@ -7,8 +7,8 @@ class UDP(object):
         self.tello_response = ""
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.local_address = ('', 9000)
-        #self.tello_address = ('', 8889)
-        self.tello_address = ('192.168.10.1', 8889)
+        self.tello_address = ('', 8889)
+        #self.tello_address = ('192.168.10.1', 8889)
 
     def send_command(self, command):
         try:
@@ -18,9 +18,10 @@ class UDP(object):
             print ("Error sending: " + str(e))
 
         print("Response is: ", self.tello_response)
+
         return self.tello_response
 
-    def receive_response(self):
+    def start_listening(self):
         self.sock.bind(self.local_address)
 
         def recv():
@@ -34,6 +35,9 @@ class UDP(object):
 
         receive_thread = threading.Thread(target=recv)
         receive_thread.start()
+
+    def get_response(self):
+        return self.tello_response
 
     def __del__(self):
         self.sock.close()

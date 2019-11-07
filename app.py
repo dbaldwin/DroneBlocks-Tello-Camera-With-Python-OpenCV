@@ -4,6 +4,7 @@ from lib.camera import Camera
 from lib.udp import UDP
 from lib.telemetry import Telemetry
 from lib.drone import Drone
+from lib.mission import Mission
 
 app = Flask(__name__)
 
@@ -67,6 +68,12 @@ def get_telemetry():
     else:
         return ""
 
+@app.route('/launch_mission', methods=['POST'])
+def launch_mission():
+    mission_code = request.json['mission_code']
+    mission.parse_mission(mission_code)
+    return ""
+
 # So that we can load DroneBlocks in an iframe
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'droneblocks/dist')
 @app.route('/droneblocks/<path:path>', methods=['GET'])
@@ -87,7 +94,10 @@ if __name__ == "__main__":
 
     # Udp for sending commands
     udp = UDP()
-    udp.receive_response()
+    udp.start_listening()
+
+    # Create the mission handler
+    mission = Mission(udp, camera)
 
     # Handle Tello's state information
     telemetry = Telemetry(drone)

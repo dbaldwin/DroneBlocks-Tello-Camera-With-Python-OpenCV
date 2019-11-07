@@ -45,8 +45,13 @@ class Camera(object):
         return jpeg.tostring()
 
     def take_photo(self):
-        filename = time.strftime("%Y%m%d-%H%M%S")
-        cv2.imwrite(self.file_path + "/photos/" + filename + ".jpg", self.frame)
+        
+        try:
+            filename = time.strftime("%Y%m%d-%H%M%S")
+            cv2.imwrite(self.file_path + "/photos/" + filename + ".jpg", self.frame)
+        except Exception as e:
+            print("Error taking photo: ", e)
+            
         return "success"
 
     def start_recording(self):

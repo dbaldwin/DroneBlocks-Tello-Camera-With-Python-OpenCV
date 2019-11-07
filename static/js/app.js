@@ -112,7 +112,11 @@ $(document).ready(function() {
 
     // Listen for yaw and distance changes on range inputs
     $(document).on('input', '#yaw_slider', function() {
-        $("#yaw_angle").text($("#yaw_slider").val());
+        $("#yaw_angle").text($(this).val());
+    });
+
+    $(document).on('input', '#distance_slider', function() {
+        $("#distance").text($(this).val());
     });
 
 });

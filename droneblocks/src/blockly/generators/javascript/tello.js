@@ -212,6 +212,16 @@ Blockly.JavaScript['flip_right'] = function(block) {
   return 'mission+="|flip_right";';
 };
 
+Blockly.JavaScript['photo'] = function(block) {
+  return 'mission+="|photo";';
+};
+
+Blockly.JavaScript['video'] = function(block) {
+  var action = block.getFieldValue("video_status");
+  return 'mission+="|video,' + action + '";';
+};
+
+
 Blockly.JavaScript['land_then_takeoff'] = function(block) {
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
 

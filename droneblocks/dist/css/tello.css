@@ -1,0 +1,229 @@
+/* General styling */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background-color: #fff;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+h1 {
+  font-weight: normal;
+  font-size: 140%;
+}
+table {
+  height: 100%;
+  width: 100%;
+}
+
+#helpButton {
+  background-color: #7FB800;
+  padding: 10px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+/* End general styling */
+
+/* Begin block category styling */
+.blocklyTreeRoot {
+  padding: 0px !important;
+}
+.blocklyTreeRow {
+  height: 30px !important;
+  line-height: 30px !important;
+}
+
+div#\:1 {
+  background-color: #264653 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:1 .blocklyTreeRow:hover {
+  background-color: #172B33 !important;
+}
+
+div#\:1 .blocklyTreeSelected {
+  background-color: #172B33 !important;
+}
+
+div#\:2 {
+  background-color: #2A9D8F !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:2 .blocklyTreeRow:hover {
+  background-color: #1E7268 !important;
+}
+
+div#\:2 .blocklyTreeSelected {
+  background-color: #1E7268 !important;
+}
+
+div#\:3 {
+  background-color: #64c2d9 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:3 .blocklyTreeRow:hover {
+  background-color: #428a9c !important;
+}
+
+div#\:3 .blocklyTreeSelected {
+  background-color: #428a9c !important;
+}
+
+div#\:4 {
+  background-color: #E9C46A !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:4 .blocklyTreeRow:hover {
+  background-color: #AD924E !important;
+}
+
+div#\:4 .blocklyTreeSelected {
+  background-color: #AD924E !important;
+}
+
+div#\:5 {
+  background-color: #aa3a3a !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:5 .blocklyTreeRow:hover {
+  background-color: #662121 !important;
+}
+
+div#\:5 .blocklyTreeSelected {
+  background-color: #662121 !important;
+}
+
+div#\:6 {
+  background-color: #5a65a7 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:6 .blocklyTreeRow:hover {
+  background-color: #373e66 !important;
+}
+
+div#\:6 .blocklyTreeSelected {
+  background-color: #373e66 !important;
+}
+
+div#\:7 {
+  background-color: #a65a80 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:7 .blocklyTreeRow:hover {
+  background-color: #723e58 !important;
+}
+
+div#\:7 .blocklyTreeSelected {
+  background-color: #723e58 !important;
+}
+
+div#\:8 {
+  background-color: #E76F51 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:8 .blocklyTreeRow:hover {
+  background-color: #B2553E !important;
+}
+
+div#\:8 .blocklyTreeSelected {
+  background-color: #B2553E !important;
+}
+
+div#\:9 {
+  background-color: #264653 !important;
+  padding: 10px !important;
+  color: #FFFFFF !important;
+}
+
+div#\:9 .blocklyTreeRow:hover {
+  background-color: #172B33 !important;
+}
+
+div#\:9 .blocklyTreeSelected {
+  background-color: #172B33 !important;
+}
+/* End block category styling */
+
+div#blocklyArea {
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+
+div#blocklyArea.half {
+  width: 55% !important;
+}
+
+div#blocklyArea.full {
+  width: 100% !important;
+}
+
+div#codeView {
+  background: #E7E7E8;
+  float: left;
+  width: 45%;
+  padding: 10px;
+  font-family: monospace;
+  height: 100%;
+  overflow: auto;
+}
+
+div#codeView.hidden {
+  display: none;
+}
+
+div#codeView.visible {
+  display: block;
+}
+
+/* Material CSS stuff */
+a#hamburger {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  z-index: 1;
+}
+
+div#missionTitle {
+  position: absolute;
+  top: 12px;
+  right: 65px;
+  z-index: 2;
+}
+
+/* override medium size for hamburger icon */
+i.medium {
+  font-size: 3rem !important;
+}
+/* end material css */
+
+/* This is to prevent the material css conflict with blockly's input fields */
+/*
+.blocklyHtmlInput {
+  border: none !important;
+  border-radius: 4px !important;
+  font-family: sans-serif !important;
+  height: 100% !important;
+  margin: 0 !important;
+  outline: none !important;
+  padding: 0 1px !important;
+  width: 100% !important;
+}
+*/

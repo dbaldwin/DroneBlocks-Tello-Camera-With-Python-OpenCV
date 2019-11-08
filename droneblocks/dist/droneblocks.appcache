@@ -1,0 +1,50 @@
+CACHE MANIFEST
+index.html
+missions.html
+blockly/blockly_compressed.js
+blockly/blocks_compressed.js
+blockly/javascript_compressed.js
+blockly/python_compressed.js
+blockly/storage.js
+blockly/prettify.css
+blockly/run_prettify.js
+blockly/generators/javascript/droneblocks.js
+blockly/generators/python/droneblocks.js
+blockly/msg/js/en.js
+blockly/blocks/droneblocks/takeoff.js
+blockly/blocks/droneblocks/land.js
+blockly/blocks/droneblocks/land_home.js
+blockly/blocks/droneblocks/hover.js
+blockly/blocks/droneblocks/yaw_right.js
+blockly/blocks/droneblocks/yaw_left.js
+blockly/blocks/droneblocks/photo.js
+blockly/blocks/droneblocks/photo_interval.js
+blockly/blocks/droneblocks/pitch_gimbal.js
+blockly/blocks/droneblocks/fly_forward.js
+blockly/blocks/droneblocks/change_altitude.js
+blockly/blocks/droneblocks/video.js
+blockly/blocks/droneblocks/orbit.js
+blockly/blocks/droneblocks/loop.js
+blockly/blocks/droneblocks/follow.js
+css/droneblocks.css
+css/style.css
+js/droneblocks.js
+js/missions.js
+js/jquery-2.2.3.min.js
+js/firebase.js
+blockly/media/sprites.png
+blockly/media/click.mp3
+blockly/media/disconnect.wav
+blockly/media/delete.mp3
+lib/materialize/css/materialize.min.css
+lib/materialize/js/materialize.min.js
+lib/firebase/firebase.js
+lib/firebase/firebase-firestore.js
+js/lib/main.min.js
+
+# Use from network if available
+NETWORK:
+*
+
+# Auto expire app cache when deploying
+# 10-10-2019

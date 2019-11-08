@@ -58,8 +58,8 @@ $(document).ready(function() {
         post("/send_command", JSON.stringify({"command": "back 20"}));
     });
 
-    $("#flip_foward").click(function() {
-        post("/send_command", JSON.stringify({"command": "flip l"}));
+    $("#flip_forward").click(function() {
+        post("/send_command", JSON.stringify({"command": "flip f"}));
     });
 
     $("#flip_backward").click(function() {

@@ -18,8 +18,6 @@ class UDP(object):
         except Exception as e:
             print ("Error sending: " + str(e))
 
-
-
         return self.tello_response
 
     def start_listening(self):
@@ -46,6 +44,9 @@ class UDP(object):
                 response = self.tello_response
                 self.tello_response = None
                 return response
+
+    def clear_response(self):
+        self.tello_response = None
 
 
     def __del__(self):

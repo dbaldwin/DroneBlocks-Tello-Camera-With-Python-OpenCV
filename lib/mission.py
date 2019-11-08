@@ -9,6 +9,11 @@ class Mission():
 
 
     def parse_mission(self, mission_code):
+
+        # Clear out any previous commands
+        self.udp.clear_response()
+
+        # Split the mission into a command list
         commands = mission_code.split("|")
 
         print("Mission is: ", mission_code)
@@ -130,11 +135,11 @@ class Mission():
             response = self.udp.get_response()
 
             if response == "ok":
-                print("finished executing command: " + command_to_execute)
+                print("finished executing command: " + command_to_execute + " with response: " + response)
                 # Delay 1 second before issuing the next command
                 sleep(1)
             else:
-                print("Here we could implement some retry logic or maybe even land")
+                print("Here we could implement some retry logic or maybe even land. Response was " + response)
 
 
         print("Mission is complete")

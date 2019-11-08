@@ -19,9 +19,11 @@ class Mission():
             command_to_execute = None
             
             if "takeoff" in command:
+
                 command_to_execute = "takeoff"
 
             elif "speed" in command:
+
                 speed = command.split(",")[1]
                 units = command.split(",")[2]
 
@@ -70,34 +72,73 @@ class Mission():
 
                 print("Delaying for ", delay, " seconds")
                 sleep(int(delay))
-
+                command_to_execute = "command"
 
             elif "yaw_right" in command:
-                print("yaw right")
+                
+                angle = command.split(",")[1]
+                command_to_execute = "cw " + angle
 
             elif "yaw_left" in command:
-                print("yaw left")
+                
+                angle = command.split(",")[1]
+                command_to_execute = "ccw " + angle
 
             elif "photo" in command:
+
                 self.camera.take_photo()
+                command_to_execute = "command"
 
             elif "video" in command:
-                self.camera.take_photo()
+                
+                action = command.split(",")[1]
+
+                if action == "start":
+                    self.camera.start_recording()
+                elif action == "stop":
+                    print("stop")
+                    self.camera.stop_recording()
+
+                command_to_execute = "command"
+            
+            elif "flip" in command:
+
+                flip = "flip " 
+
+                if "forward" in command:
+                    flip = flip + " f"
+                elif "backward" in command:
+                    flip = flip + " b"
+                elif "left" in command:
+                    flip = flip + " l"
+                elif "right" in command:
+                    flip = flip + " r"
+
+                command_to_execute = flip
+
+            elif "land" in command:
+
+                command_to_execute = "land"
+
                 
 
-            print(command_to_execute)
+            # Send the command
+            self.udp.send_command(command_to_execute)
+
+            # Get the response
+            # This will block and wait for the response
+            response = self.udp.get_response()
+
+            if response == "ok":
+                print("finished executing command: " + command_to_execute)
+                # Delay 1 second before issuing the next command
+                sleep(1)
+            else:
+                print("Here we could implement some retry logic or maybe even land")
 
 
-            
+        print("Mission is complete")
 
-            
-            # self.udp.send_command(command)
-
-            # sleep(1)
-
-            # response = self.udp.get_response()
-
-            # print(response)
     
     def execute_mission(self, mission_commands):
         return

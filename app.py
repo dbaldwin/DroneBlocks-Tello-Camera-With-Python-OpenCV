@@ -25,14 +25,14 @@ def get_frame(camera):
 @app.route("/connect")
 def connect():
     udp.send_command("command")
-    response = udp.get_response()
+    udp.get_response()
 
     if status == "ok":
         drone.is_connected = True
     else:
         drone.is_connected = False
     
-    return response
+    return drone.toJSON()
 
 @app.route("/status")
 def status():
@@ -43,7 +43,6 @@ def send_command():
     command = request.json['command']
     udp.send_command(command)
     response = udp.get_response()
-    print(response)
     return response
 
 @app.route('/take_photo')

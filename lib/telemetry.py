@@ -40,7 +40,7 @@ class Telemetry(object):
         def recv():
             while True:
                 try:
-                    response, _ = self.telemetry_sock.recvfrom(128)
+                    response, _ = self.telemetry_sock.recvfrom(256)
                     response = response.decode(encoding="utf-8")
                     self.parse_telemetry(response)                
                 except Exception as e:

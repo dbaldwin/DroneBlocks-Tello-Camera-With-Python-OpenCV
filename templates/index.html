@@ -32,6 +32,14 @@
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
+                    <div style="margin-right: 30px;">
+                        <div class="uk-form-controls">
+                            Units:&nbsp;&nbsp;
+                            <label><input class="uk-radio" type="radio" name="units" data-value="in" checked>&nbsp;IN</label>
+                            &nbsp;
+                            <label><input class="uk-radio" type="radio" data-value="cm" name="units">&nbsp;CM</label>
+                        </div>
+                    </div>
                     <ul class="uk-navbar-nav">
                         <li><button class="uk-button uk-button-primary" id="connect">Connect</button></li>
                     </ul>
@@ -48,13 +56,13 @@
             <div class="uk-padding-small">
                 <button class="uk-button uk-button-primary uk-button-small" id="takeoff">Takeoff</button>
                 <button class="uk-button uk-button-primary uk-button-small" id="land">Land</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="streamon">Stream On</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="streamoff">Stream Off</button>
             </div>
 
             <img id="video" src="/static/img/blank_video.png" />
 
             <div class="uk-padding-small">
-                <button class="uk-button uk-button-primary uk-button-small" id="streamon">Stream On</button>
-                <button class="uk-button uk-button-primary uk-button-small" id="streamoff">Stream Off</button>
                 <button class="uk-button uk-button-primary uk-button-small" id="take_photo">Take Photo</button>
                 <button class="uk-button uk-button-primary uk-button-small" id="record_video">Start Recording</button>
             </div>
@@ -80,7 +88,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <input class="uk-range" type="range" value="90" min="5" max="360" step="5" id="yaw_slider" style="width: 200px;" />
+                                    <input class="uk-range" type="range" value="90" min="5" max="360" step="5" id="yaw_slider" style="width: 150px;" />
                                     <div>
                                         Yaw angle: <span id="yaw_angle">90</span>°
                                     </div>
@@ -104,28 +112,30 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><button id="fly_backward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Down; pos: bottom">▼</button></td>
+                                <td><button id="fly_backward" class="uk-button uk-button-small uk-button-primary uk-text-nowrap" uk-tooltip="title: Fly Backward; pos: bottom">▼</button></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <input class="uk-range" type="range" value="50" min="10" max="500" step="5" id="distance_slider" style="width: 200px;" />
+                                    <input class="uk-range" type="range" value="50" min="10" max="500" step="5" id="distance_slider" style="width: 150px;" />
                                     <div>
-                                        Distance: <span id="distance">50</span> <span>cm</span>
+                                        Distance: <span id="distance">50</span> <span id="display_units">in</span>
                                     </div>
                                 </td>
                                 </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div>
-                    <button class="uk-button uk-button-primary uk-button-small" id="flip_forward">Flip Forward</button>
-                    <button class="uk-button uk-button-primary uk-button-small" id="flip_backward">Flip Backward</button>
-                    <button class="uk-button uk-button-primary uk-button-small" id="flip_left">Flip Left</button>
-                    <button class="uk-button uk-button-primary uk-button-small" id="flip_right">Flip Right</button>
-                </div>
             </div>
+
+            <div>
+                <button class="uk-button uk-button-primary uk-button-small" id="flip_forward">Flip Forward</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="flip_backward">Flip Backward</button>
+                <div>&nbsp;</div>
+                <button class="uk-button uk-button-primary uk-button-small" id="flip_left">Flip Left</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="flip_right">Flip Right</button>
+            </div>
+            
         </div>
 
         <div class="uk-width-3-5">

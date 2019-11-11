@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     var is_recording = false;
+    var distance_units = "in";
 
     $("#connect").click(function() {
         $.getJSON("/connect", {}, function(response) {
@@ -27,7 +28,8 @@ $(document).ready(function() {
     });
 
     $("#fly_up").click(function() {
-        post("/send_command", JSON.stringify({"command": "up 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "up " + distance}));
     });
 
     $("#yaw_left").click(function() {
@@ -39,23 +41,28 @@ $(document).ready(function() {
     });
 
     $("#fly_down").click(function() {
-        post("/send_command", JSON.stringify({"command": "down 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "down " + distance}));
     });
 
     $("#fly_forward").click(function() {
-        post("/send_command", JSON.stringify({"command": "forward 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "forward " + distance}));
     });
 
     $("#fly_left").click(function() {
-        post("/send_command", JSON.stringify({"command": "left 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "left " + distance}));
     });
 
     $("#fly_right").click(function() {
-        post("/send_command", JSON.stringify({"command": "right 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "right " + distance}));
     });
 
     $("#fly_backward").click(function() {
-        post("/send_command", JSON.stringify({"command": "back 20"}));
+        var distance = getDistanceBasedOnUnits(distance_units);
+        post("/send_command", JSON.stringify({"command": "back " + distance}));
     });
 
     $("#flip_forward").click(function() {
@@ -119,6 +126,12 @@ $(document).ready(function() {
         $("#distance").text($(this).val());
     });
 
+    // Check for changes to units
+    $("input[type=radio]").click(function() {
+        distance_units = $(this).data('value');
+        $("#display_units").text(distance_units);
+    });
+
 });
 
 function post(url, command) {
@@ -130,4 +143,19 @@ function post(url, command) {
     }).done(function(data){
         //
     });
+}
+
+function getDistanceBasedOnUnits(units) {
+
+    var distance = $("#distance").html();
+
+    if (units == "in") {
+
+        // Convert distance to cm value to be sent (since that's what the SDK expects)
+        distance = distance * 2.54;
+
+    }
+
+    return distance;
+
 }

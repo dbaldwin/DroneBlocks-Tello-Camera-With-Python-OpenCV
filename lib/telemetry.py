@@ -49,10 +49,6 @@ class Telemetry(object):
 
         thread = threading.Thread(target=recv)
         thread.start()
-
-    def get_telemetry_data(self):
-        return self.telemetry_data
-
     
     def parse_telemetry(self, data):
         data = data.split(";")

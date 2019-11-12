@@ -16,6 +16,10 @@ class Mission():
         # Split the mission into a command list
         commands = mission_code.split("|")
 
+        # Remove any empty strings from the list. This can happen in cases where there is a mission without a takeoff block
+        while ("" in commands):
+            commands.remove("")
+
         print("Mission is: ", mission_code)
         print("Commands are: ", commands)
 
@@ -124,8 +128,6 @@ class Mission():
             elif "land" in command:
 
                 command_to_execute = "land"
-
-                
 
             # Send the command
             self.udp.send_command(command_to_execute)

@@ -60,14 +60,6 @@ def stop_recording():
     camera.stop_recording()
     return drone.toJSON()
 
-@app.route('/get_telemetry')
-def get_telemetry():
-    if drone.is_connected:
-        data = telemetry.get_telemetry_data()
-        return jsonify(data)
-    else:
-        return ""
-
 @app.route('/launch_mission', methods=['POST'])
 def launch_mission():
     mission_code = request.json['mission_code']

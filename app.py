@@ -79,7 +79,7 @@ def droneblocks(path):
 if __name__ == "__main__":
 
     # Initialize the drone class
-    drone = Drone(is_aruco_tracking_enabled=False)
+    drone = Drone(is_aruco_tracking_enabled=True)
 
     # Camera for stream, photo, video
     camera = Camera(drone)

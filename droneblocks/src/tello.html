@@ -47,21 +47,6 @@
   
   <script> 
     var aircraft = "Tello";
-    // Initialize Firebase
-    // var config = {
-    //   apiKey: "AIzaSyBcbAt69BGUjPiOucQbkcNNbcdaSmE-G0o",
-    //   authDomain: "fiery-inferno-4972.firebaseapp.com",
-    //   databaseURL: "https://fiery-inferno-4972.firebaseio.com",
-    //   storageBucket: "",
-    // };
-    // var config = {
-    //   apiKey: "AIzaSyAGgqla_TWV4wVgaQ87HG3VDT0igLA8KhU",
-    //   authDomain: "droneblocks-staging.firebaseapp.com",
-    //   databaseURL: "https://droneblocks-staging.firebaseio.com",
-    //   projectId: "droneblocks-staging",
-    //   storageBucket: "droneblocks-staging.appspot.com",
-    // };
-    // firebase.initializeApp(config);
 
     // For Tello metric/standard units
     if(localStorage.getItem('units') != null) {
@@ -82,23 +67,12 @@
   
   <!-- Side nav -->
   <ul id="nav-mobile" class="side-nav">
-   <!--<li class="center-align" id="login"><span class="waves-effect waves-light btn z-depth-0 light-blue">Login</span></li>
-    <li class="divider"></li>-->
     <li><a href="#" id="newMission">New Mission</a></li>
     <li class="divider"></li>
     <li><a href="#" id="previewMission">Launch Mission</a></li>
     <li class="divider"></li>
     <li><a href="#" id="showCode">Show Mission Code</a></li>
     <li class="divider"></li>
-    <li><a href="#" id="saveMission">Save Mission</a></li>
-    <li class="divider" id="d1"></li>
-    <li><a href="#" id="saveMissionAs">Save Mission As...</a></li>
-    <li class="divider" id="d2"></li>
-    <li><a href="tello_missions.html" id="myMissions">My Missions</a></li>
-    <li class="divider" id="d3"></li>
-    <li><a href="#" id="setUnits" data-units="metric">Switch to Metric Units</a></li>
-    <li class="divider" id="d5"></li>
-    <li class="center-align" id="logout"><span class="waves-effect waves-light btn z-depth-0 light-blue">Logout</span></li>
   </ul>
   
   <!-- Hamburger icon -->

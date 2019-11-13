@@ -67,7 +67,7 @@ class Mission():
                 elif "down" in command:
                     direction = "down"
 
-                command_to_execute = direction + " " + distance
+                command_to_execute = direction + " " + self.convert_distance(distance, units)
 
             elif "curve" in command:
                 
@@ -147,8 +147,13 @@ class Mission():
         print("Mission is complete")
 
     
-    def execute_mission(self, mission_commands):
-        return
+    # Tello only flies in units of cm so we need to convert from in to cm
+    def convert_distance(self, distance, units):
+
+        if units == "in":
+            distance = int(distance) * 2.54
+
+        return str(distance)
 
 
 

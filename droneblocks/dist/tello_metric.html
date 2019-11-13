@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html manifest="tello.appcache">
-<!-- <html> -->
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -18,27 +17,20 @@
   <script src="./blockly/blocks/tello/takeoff.js"></script>
   <script src="./blockly/blocks/tello/land_then_takeoff.js"></script>
   <script src="./blockly/blocks/tello/land.js"></script>
-  <script src="./blockly/blocks/tello/speed.js"></script>
   <script src="./blockly/blocks/tello/speed_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_forward.js"></script>
   <script src="./blockly/blocks/tello/fly_forward_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_backward.js"></script>
   <script src="./blockly/blocks/tello/fly_backward_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_left.js"></script>
   <script src="./blockly/blocks/tello/fly_left_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_right.js"></script>
   <script src="./blockly/blocks/tello/fly_right_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_up.js"></script>
   <script src="./blockly/blocks/tello/fly_up_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_down.js"></script>
   <script src="./blockly/blocks/tello/fly_down_metric.js"></script>
-  <script src="./blockly/blocks/tello/fly_xyz.js"></script>
   <script src="./blockly/blocks/tello/fly_xyz_metric.js"></script>
-  <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/curve_metric.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
   <script src="./blockly/blocks/tello/yaw_right.js"></script>
   <script src="./blockly/blocks/tello/yaw_left.js"></script>
+  <script src="./blockly/blocks/tello/photo.js"></script>
+  <script src="./blockly/blocks/tello/video.js"></script>
   <script src="./blockly/blocks/tello/flip_forward.js"></script>
   <script src="./blockly/blocks/tello/flip_backward.js"></script>
   <script src="./blockly/blocks/tello/flip_right.js"></script>
@@ -66,25 +58,12 @@
   
   <!-- Side nav -->
   <ul id="nav-mobile" class="side-nav">
-    <li class="center-align" id="login"><span class="waves-effect waves-light btn z-depth-0 light-blue">Login</span></li>
-    <li class="divider"></li>
     <li><a href="#" id="newMission">New Mission</a></li>
     <li class="divider"></li>
     <li><a href="#" id="previewMission">Launch Mission</a></li>
     <li class="divider"></li>
     <li><a href="#" id="showCode">Show Mission Code</a></li>
     <li class="divider"></li>
-    <li><a href="#" id="saveMission">Save Mission</a></li>
-    <li class="divider" id="d1"></li>
-    <li><a href="#" id="saveMissionAs">Save Mission As...</a></li>
-    <li class="divider" id="d2"></li>
-    <li><a href="tello_missions.html" id="myMissions">My Missions</a></li>
-    <li class="divider" id="d3"></li>
-    <li><a href="#" id="setUnits" data-units="standard">Switch to Standard Units</a></li>
-    <li class="divider" id="d4"></li>
-    <li><a href="#" id="connectTo">DJI Blocks</a></li>
-    <li class="divider" id="d5"></li>
-    <li class="center-align" id="logout"><span class="waves-effect waves-light btn z-depth-0 light-blue">Logout</span></li>
   </ul>
   
   <!-- Hamburger icon -->
@@ -106,11 +85,6 @@
       <a href="#!" class=" modal-action waves-effect waves-light btn z-depth-0" id="saveModal">Save</a>
       <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
     </div>
-    
-  </div>
-  
-  <!-- Map preview modal -->
-  <div id="mapPreviewModal" class="modal" style="width: 95% !important; height: 100% !important">
     
   </div>
   
@@ -247,6 +221,10 @@
           </shadow>
         </value>
       </block>
+    </category>
+    <category name="Camera">
+      <block type="photo"></block>
+      <block type="video"></block>
     </category>
     <category name="Flip">
       <block type="flip_forward"></block>

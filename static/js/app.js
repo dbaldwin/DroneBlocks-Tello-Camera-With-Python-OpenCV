@@ -130,6 +130,12 @@ $(document).ready(function() {
     $("input[type=radio]").click(function() {
         distance_units = $(this).data('value');
         $("#display_units").text(distance_units);
+
+        if (distance_units == "cm") {
+            $("#droneblocks_iframe").attr('src', '/droneblocks/tello_metric.html');
+        } else {
+            $("#droneblocks_iframe").attr('src', '/droneblocks/tello.html');
+        }
     });
 
 });

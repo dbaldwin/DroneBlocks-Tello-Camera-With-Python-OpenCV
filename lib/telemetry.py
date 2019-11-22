@@ -3,6 +3,7 @@ import threading
 import time
 from lib import drone
 
+
 class Telemetry(object):
 
     def __init__(self, drone):
@@ -51,14 +52,37 @@ class Telemetry(object):
         thread.start()
     
     def parse_telemetry(self, data):
-        data = data.split(";")
-        self.drone.pitch = data[self.tello_telemetry_indices["pitch"]].split(":")[1]
-        self.drone.roll = data[self.tello_telemetry_indices["roll"]].split(":")[1]
-        self.drone.yaw = data[self.tello_telemetry_indices["yaw"]].split(":")[1]
-        self.drone.tof = data[self.tello_telemetry_indices["tof"]].split(":")[1]
-        self.drone.altitude = data[self.tello_telemetry_indices["altitude"]].split(":")[1]
-        self.drone.battery = data[self.tello_telemetry_indices["battery"]].split(":")[1]
 
+        data = data.split(";")
+
+        # Detect if Tello (1) or Tello EDU (2)
+        if self.drone.type is None:
+            # Tello EDU contains mid
+            if("mid" in data[0]):
+                self.drone.type = 2
+
+        
+        if self.drone.type == 2:
+            pitch_index = self.tello_edu_telemetry_indices["pitch"]
+            roll_index = self.tello_edu_telemetry_indices["roll"]
+            yaw_index = self.tello_edu_telemetry_indices["yaw"]
+            tof_index = self.tello_edu_telemetry_indices["tof"]
+            altitude_index = self.tello_edu_telemetry_indices["altitude"]
+            battery_index = self.tello_edu_telemetry_indices["battery"]
+        else: 
+            pitch_index = self.tello_telemetry_indices["pitch"]
+            roll_index = self.tello_telemetry_indices["roll"]
+            yaw_index = self.tello_telemetry_indices["yaw"]
+            tof_index = self.tello_telemetry_indices["tof"]
+            altitude_index = self.tello_telemetry_indices["altitude"]
+            battery_index = self.tello_telemetry_indices["battery"]
+
+        self.drone.pitch = data[pitch_index].split(":")[1]
+        self.drone.roll = data[roll_index].split(":")[1]
+        self.drone.yaw = data[yaw_index].split(":")[1]
+        self.drone.tof = data[tof_index].split(":")[1]
+        self.drone.altitude = data[altitude_index].split(":")[1]
+        self.drone.battery = data[battery_index].split(":")[1]
 
     def __del__(self):
         self.telemetry_sock.close()

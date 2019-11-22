@@ -14,6 +14,7 @@ class Drone(object):
         self.tof = None
         self.altitude = None
         self.battery = None
+        self.type = None # 1 is Tello, 2 is Tello EDU
 
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True)

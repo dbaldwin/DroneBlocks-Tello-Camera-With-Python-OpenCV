@@ -16,89 +16,105 @@ $(document).ready(function() {
 
     // Start the video stream
     $("#streamon").click(function() {
+        console.log("Sending command: streamon");
         post("/send_command", JSON.stringify({"command": "streamon"}));
         $("#video").attr("src", "/video_stream");
     });
 
     // Stop the video stream
     $("#streamoff").click(function() {
+        console.log("Sending command: steamoff");
         post("/send_command", JSON.stringify({"command": "streamoff"}));
         $("#video").attr("src", "/static/img/blank_video.png");
     });
 
     // Takeoff
     $("#takeoff").click(function() {
+        console.log("Sending command: takeoff");
         post("/send_command", JSON.stringify({"command": "takeoff"}));
     });
 
     // Fly up
     $("#fly_up").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: up " + distance);
         post("/send_command", JSON.stringify({"command": "up " + distance}));
     });
 
     // Yaw left
     $("#yaw_left").click(function() {
+        console.log("Sending command: ccw " + $("#yaw_slider").val());
         post("/send_command", JSON.stringify({"command": "ccw " + $("#yaw_slider").val()}));
     });
 
     // Yaw right
     $("#yaw_right").click(function() {
+        console.log("Sending command: cw " + $("#yaw_slider").val());
         post("/send_command", JSON.stringify({"command": "cw " + $("#yaw_slider").val()}));
     });
 
     // Fly down
     $("#fly_down").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: down " + distance);
         post("/send_command", JSON.stringify({"command": "down " + distance}));
     });
 
     // Fly forward
     $("#fly_forward").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: forward " + distance);
         post("/send_command", JSON.stringify({"command": "forward " + distance}));
     });
 
     // Fly left
     $("#fly_left").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: left " + distance);
         post("/send_command", JSON.stringify({"command": "left " + distance}));
     });
 
     // Fly right
     $("#fly_right").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: right " + distance);
         post("/send_command", JSON.stringify({"command": "right " + distance}));
     });
 
     // Fly backward
     $("#fly_backward").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
+        console.log("Sending command: back " + distance);
         post("/send_command", JSON.stringify({"command": "back " + distance}));
     });
 
     // Forward flip
     $("#flip_forward").click(function() {
+        console.log("Sending command: flip f");
         post("/send_command", JSON.stringify({"command": "flip f"}));
     });
 
     // Back flip
     $("#flip_backward").click(function() {
+        console.log("Sending command: flip b");
         post("/send_command", JSON.stringify({"command": "flip b"}));
     });
 
     // Left flip
     $("#flip_left").click(function() {
+        console.log("Sending command: flip l");
         post("/send_command", JSON.stringify({"command": "flip l"}));
     });
 
     // Right flip
     $("#flip_right").click(function() {
+        console.log("Sending command: flip r");
         post("/send_command", JSON.stringify({"command": "flip r"}));
     });
 
     // Land
     $("#land").click(function() {
+        console.log("Sending command: land");
         post("/send_command", JSON.stringify({"command": "land"}));
     });
 

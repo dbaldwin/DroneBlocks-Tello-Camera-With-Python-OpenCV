@@ -3,6 +3,7 @@ $(document).ready(function() {
     var is_recording = false;
     var distance_units = "in";
 
+    // Connect to Tello after wifi connection is established
     $("#connect").click(function() {
         $.getJSON("/connect", {}, function(response) {
             if (response.is_connected == true) {
@@ -13,82 +14,100 @@ $(document).ready(function() {
         
     });
 
+    // Start the video stream
     $("#streamon").click(function() {
         post("/send_command", JSON.stringify({"command": "streamon"}));
         $("#video").attr("src", "/video_stream");
     });
 
+    // Stop the video stream
     $("#streamoff").click(function() {
         post("/send_command", JSON.stringify({"command": "streamoff"}));
         $("#video").attr("src", "/static/img/blank_video.png");
     });
 
+    // Takeoff
     $("#takeoff").click(function() {
         post("/send_command", JSON.stringify({"command": "takeoff"}));
     });
 
+    // Fly up
     $("#fly_up").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "up " + distance}));
     });
 
+    // Yaw left
     $("#yaw_left").click(function() {
         post("/send_command", JSON.stringify({"command": "ccw " + $("#yaw_slider").val()}));
     });
 
+    // Yaw right
     $("#yaw_right").click(function() {
         post("/send_command", JSON.stringify({"command": "cw " + $("#yaw_slider").val()}));
     });
 
+    // Fly down
     $("#fly_down").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "down " + distance}));
     });
 
+    // Fly forward
     $("#fly_forward").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "forward " + distance}));
     });
 
+    // Fly left
     $("#fly_left").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "left " + distance}));
     });
 
+    // Fly right
     $("#fly_right").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "right " + distance}));
     });
 
+    // Fly backward
     $("#fly_backward").click(function() {
         var distance = getDistanceBasedOnUnits(distance_units);
         post("/send_command", JSON.stringify({"command": "back " + distance}));
     });
 
+    // Forward flip
     $("#flip_forward").click(function() {
         post("/send_command", JSON.stringify({"command": "flip f"}));
     });
 
+    // Back flip
     $("#flip_backward").click(function() {
         post("/send_command", JSON.stringify({"command": "flip b"}));
     });
 
+    // Left flip
     $("#flip_left").click(function() {
         post("/send_command", JSON.stringify({"command": "flip l"}));
     });
 
+    // Right flip
     $("#flip_right").click(function() {
         post("/send_command", JSON.stringify({"command": "flip r"}));
     });
 
+    // Land
     $("#land").click(function() {
         post("/send_command", JSON.stringify({"command": "land"}));
     });
 
+    // Take a photo
     $("#take_photo").click(function() {
         $.get("/take_photo", function(data){});
     });
 
+    // Start or stop recording video
     $("#record_video").click(function() {
 
         if (!is_recording) {
@@ -140,6 +159,7 @@ $(document).ready(function() {
 
 });
 
+// Called when a control command is being issued
 function post(url, command) {
     $.ajax({
         url: url,
@@ -151,6 +171,7 @@ function post(url, command) {
     });
 }
 
+// Cover distance based on units (in/cm)
 function getDistanceBasedOnUnits(units) {
 
     var distance = $("#distance").html();

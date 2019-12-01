@@ -1,6 +1,8 @@
 # DroneBlocks Tello Camera Access with Python, OpenCV, Flask
 
-A Python based project that allows users to manually control Tello, access the camera, and program Tello with DroneBlocks.
+A Python based project that allows users to manually control Tello, access the camera, and program Tello with DroneBlocks. Check out the course that walks through the details of installing dependencies and using the app:
+
+https://learn.droneblocks.io/p/opencv-python-and-droneblocks-for-tello-camera-control/
 
 **Please note that this project has only been tested on Windows 10 and Mac OS X**
 

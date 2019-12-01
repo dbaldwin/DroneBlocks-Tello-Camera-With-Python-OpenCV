@@ -17,4 +17,11 @@ This project was developed by the DroneBlocks team to provide the following capa
 
 ## Software dependencies
 
-Python, OpenCV, OpenCV Contrib, ffmpeg, Flask
+* [Python 3.7.4](https://www.python.org/downloads/)
+* [OpenCV 4](https://opencv.org/opencv-4-0/)
+* [OpenCV Contrib](https://pypi.org/project/opencv-contrib-python/)
+* [ffmpeg](https://github.com/kkroening/ffmpeg-python)
+* [Flask](https://github.com/pallets/flask)
+
+## Support
+If you need help installing dependencies please consider [purchasing our course](https://learn.droneblocks.io/p/opencv-python-and-droneblocks-for-tello-camera-control) to support this project. You can also feel free to [open an issue](https://github.com/dbaldwin/DroneBlocks-Tello-Camera-With-Python-OpenCV/issues) and join our [Facebook group](https://www.facebook.com/groups/droneblocks/).

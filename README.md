@@ -2,6 +2,8 @@
 
 A Python based project that allows users to manually control Tello, access the camera, and program Tello with DroneBlocks.
 
+**Please note that this project has only been tested on Windows 10 and Mac OS X**
+
 This project was developed by the DroneBlocks team to provide the following capabilities:
 
 1. Navigate Tello using brower based controls

@@ -50,7 +50,8 @@ def receive():
       print("Received message: " + message)
 
       # If a command was in progress let's reset it to False
-      if COMMAND_IN_PROGRESS and message is "ok":
+      if COMMAND_IN_PROGRESS and "ok" in message:
+        print("resetting command in progress")
         COMMAND_IN_PROGRESS = False
 
     except Exception as e:
@@ -80,7 +81,7 @@ time.sleep(1)
 camera = cv2.VideoCapture('udp://127.0.0.1:11111')
 
 # This will give the video stream some time to display
-time.sleep(5)
+time.sleep(3)
 
 # Takeoff 
 send("takeoff")
@@ -104,12 +105,12 @@ while(True):
       if not COMMAND_IN_PROGRESS:
         # Do a flip based on aruco marker
         if id == FLIP_MARKER_ID:
-          print("Marker detected!!!")
+          print("Flip marker detected!!!")
           send("flip f")
           COMMAND_IN_PROGRESS = True
         # Land based on aruco marker
         elif id == LAND_MARKER_ID:
-          print("Landing!!!")
+          print("Land marker detected!!!")
           send("land")
           COMMAND_IN_PROGRESS = True
 

@@ -1,3 +1,7 @@
+# This python script accesses Tello's camera, takes off, and then detects markers to perform certain commands
+# In this case we detect marker id 33 and do a forward flip while marker id 1 commands Tello to land
+# Modify this script to suit your needs and feel free to open a GitHub issue with any questions
+
 import cv2
 import numpy as np
 import time

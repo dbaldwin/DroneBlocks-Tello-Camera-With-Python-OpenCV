@@ -105,7 +105,6 @@ class Mission():
                 if action == "start":
                     self.camera.start_recording()
                 elif action == "stop":
-                    print("stop")
                     self.camera.stop_recording()
 
                 command_to_execute = "command"

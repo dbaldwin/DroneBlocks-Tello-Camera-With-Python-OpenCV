@@ -66,6 +66,16 @@ def launch_mission():
     mission.parse_mission(mission_code)
     return ""
 
+@app.route('/pause_mission')
+def pause_mission():
+    mission.pause_mission()
+    return ""
+
+@app.route('/resume_mission')
+def resume_mission():
+    mission.resume_mission()
+    return ""
+
 # So that we can load DroneBlocks in an iframe
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'droneblocks/dist')
 @app.route('/droneblocks/<path:path>', methods=['GET'])
@@ -89,7 +99,7 @@ if __name__ == "__main__":
     udp.start_listening()
 
     # Create the mission handler
-    mission = Mission(udp, camera)
+    mission = Mission(udp, camera, drone)
 
     # Handle Tello's state information
     telemetry = Telemetry(drone)

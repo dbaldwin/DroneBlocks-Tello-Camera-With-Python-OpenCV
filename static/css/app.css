@@ -16,3 +16,10 @@
 .border {
     border: 1px solid #ff0000;
 }
+
+#pause {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    visibility: hidden;
+}

@@ -8,6 +8,7 @@ class Drone(object):
         self.is_aruco_tracking_enabled = is_aruco_tracking_enabled
         self.is_recording_video = False
         self.is_running_droneblocks_mission = False
+        self.is_paused = False
         self.pitch = None
         self.roll = None
         self.yaw = None

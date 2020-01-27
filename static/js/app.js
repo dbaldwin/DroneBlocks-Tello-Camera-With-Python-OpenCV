@@ -147,6 +147,20 @@ $(document).ready(function() {
                 $("#roll").text(response.roll + "°");
                 $("#pitch").text(response.pitch + "°");
                 $("#yaw").text(response.yaw + "°");
+                
+                // Display pause button
+                if (response.is_running_droneblocks_mission) {
+
+                    if (response.is_paused) {
+                        $("#pause").html("Resume Mission");
+                    } else {
+                        $("#pause").html("Pause Mission");
+                        $("#pause").css("visibility", "visible");
+                    }
+
+                } else {
+                    $("#pause").css("visibility", "hidden");
+                }
             }
         });
     }, 500);
@@ -171,6 +185,18 @@ $(document).ready(function() {
         } else {
             $("#droneblocks_iframe").attr('src', '/droneblocks/tello.html');
         }
+    });
+
+    // Handle pausing mission
+    $("#pause").click(function() {
+        let button_text = $(this).text();
+
+        if (button_text == "Pause Mission") {
+            $.get("/pause_mission", function(data){});
+        } else {
+            $.get("/resume_mission", function(data){});
+        }
+
     });
 
 });

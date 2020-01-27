@@ -28,6 +28,7 @@ class UDP(object):
                 try:
                     self.tello_response, _ = self.sock.recvfrom(128)
                     self.tello_response = self.tello_response.decode(encoding="utf-8")
+                    print("udp receive got a response: " + self.tello_response)
                 except Exception as e:
                     self.tello_response = None
                     print("Error receiving: " + str(e))

@@ -2,10 +2,14 @@ from time import sleep
 
 class Mission():
 
-    def __init__(self, udp, camera):
+    def __init__(self, udp, camera, drone):
         self.udp = udp
         self.camera = camera
+        self.drone = drone
         self.test_command_string = "takeoff|fly_forward,20,in|yaw_right,90|land"
+        self.current_command_index = 0
+        self.is_mission_paused = False
+        self.resumed_mission = ""# This will contain the commands to resume the mission
 
 
     def parse_mission(self, mission_code):
@@ -13,8 +17,17 @@ class Mission():
         # Clear out any previous commands
         self.udp.clear_response()
 
+        # Reset the paused mission varables
+        self.current_command_index = 0
+        self.is_mission_paused = False
+        self.resumed_mission = ""
+
         # Split the mission into a command list
         commands = mission_code.split("|")
+
+        # Used so we can update pause/resume UI button
+        self.drone.is_running_droneblocks_mission = True
+        self.drone.is_paused = False
 
         # Remove any empty strings from the list. This can happen in cases where there is a mission without a takeoff block
         while ("" in commands):
@@ -79,8 +92,9 @@ class Mission():
 
                 delay = command.split(",")[1]
 
-                print("Delaying for ", delay, " seconds")
+                print("Hovering for ", delay, " seconds")
                 sleep(int(delay))
+                print("Done hovering")
                 command_to_execute = "command"
 
             elif "yaw_right" in command:
@@ -136,14 +150,42 @@ class Mission():
             response = self.udp.get_response()
 
             if response == "ok":
-                print("finished executing command: " + command_to_execute + " with response: " + response)
+                print("Finished executing command: " + command_to_execute + " with response: " + response)
+
+                # Increment the command counter (used for pausing and resuming missions)
+                self.current_command_index = self.current_command_index + 1
+
                 # Delay 1 second before issuing the next command
                 sleep(1)
+
+                # If mission is paused let's break out of the command loop
+                if self.is_mission_paused:
+
+                    # Used to update the status so we can change the UI button to "Resume"
+                    self.drone.is_paused = True
+                    
+                    # Store the resumed mission in the string format so we can resume later
+                    self.resumed_mission = "|".join(commands[self.current_command_index:])
+                    print("Mission is paused. We'll resume mission with: " + self.resumed_mission)
+                    break
+
             else:
                 print("Here we could implement some retry logic or maybe even land. Response was " + response)
 
+        # Let's not trigger this code in cases where the mission is paused
+        if self.is_mission_paused is False:
+            print("Mission is complete!")
+            self.drone.is_running_droneblocks_mission = False
 
-        print("Mission is complete")
+    # Allow the user to pause the mission
+    # The mission will complete the current command being executed and then pause
+    def pause_mission(self):
+        self.is_mission_paused = True
+
+    # Pick up where we left off
+    def resume_mission(self):
+        self.parse_mission(self.resumed_mission)
+
 
     
     # Tello only flies in units of cm so we need to convert from in to cm

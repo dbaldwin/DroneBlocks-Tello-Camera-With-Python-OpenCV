@@ -54,10 +54,10 @@ class Mission():
 
             elif "fly_xyz" in command:
 
-                x = command.split(",")[1]
-                y = command.split(",")[2]
-                z = command.split(",")[3]
                 units = command.split(",")[4]
+                x = self.convert_distance(command.split(",")[1], units)
+                y = self.convert_distance(command.split(",")[2], units)
+                z = self.convert_distance(command.split(",")[3], units)
 
                 command_to_execute = "go " + x + " " + y + " " + z + " 100"
 
@@ -85,8 +85,15 @@ class Mission():
             elif "curve" in command:
                 
                 params = command.split(",")
+                units = params[7]
+                x1 = self.convert_distance(params[1], units)
+                y1 = self.convert_distance(params[2], units)
+                z1 = self.convert_distance(params[3], units)
+                x2 = self.convert_distance(params[4], units)
+                y2 = self.convert_distance(params[5], units)
+                z2 = self.convert_distance(params[6], units)
 
-                command_to_execute = "curve " + params[1] + " " + params[2] + " " + params[3] + " " + params[4] + " " + params[5] + " " + params[6] + " 100"
+                command_to_execute = "curve " + x1 + " " + y1 + " " + z1 + " " + x2 + " " + y2 + " " + z2 + " 100"
 
             elif "hover" in command:
 

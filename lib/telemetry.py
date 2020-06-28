@@ -49,6 +49,7 @@ class Telemetry(object):
                     break
 
         thread = threading.Thread(target=recv)
+        thread.setDaemon(True)
         thread.start()
     
     def parse_telemetry(self, data):

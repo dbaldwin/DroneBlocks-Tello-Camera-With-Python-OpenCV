@@ -64,6 +64,8 @@ class Camera(object):
         self.drone.is_recording_video = False
 
     def __del__(self):
-        self.vout.release()
-        self.cap.release()
+        if self.vout:
+            self.vout.release()
+        if self.cap:
+            self.cap.release()
 

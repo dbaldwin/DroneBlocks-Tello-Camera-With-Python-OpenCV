@@ -34,6 +34,7 @@ class UDP(object):
                     break
 
         receive_thread = threading.Thread(target=recv)
+        receive_thread.setDaemon(True)
         receive_thread.start()
 
     # Loop and wait for a response

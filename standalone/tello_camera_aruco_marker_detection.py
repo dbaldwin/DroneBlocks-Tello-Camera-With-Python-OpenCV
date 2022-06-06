@@ -91,31 +91,34 @@ while(True):
     # Capture frame-by-frame
     ret, frame = camera.read()
 
-    # Convert the color frame to grayscale for marker detection
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    # Make sure we have a valid frame
+    if frame is not None:
 
-    # Get marker corners and ids
-    corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=aruco_params)
-    markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
+      # Convert the color frame to grayscale for marker detection
+      gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Loop through the markers (in case more than one is detected)
-    for index, id in np.ndenumerate(ids):
+      # Get marker corners and ids
+      corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=aruco_params)
+      markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
-      # If we find marker 33 then let's do a front flip
-      if not COMMAND_IN_PROGRESS:
-        # Do a flip based on aruco marker
-        if id == FLIP_MARKER_ID:
-          print("Flip marker detected!!!")
-          send("flip f")
-          COMMAND_IN_PROGRESS = True
-        # Land based on aruco marker
-        elif id == LAND_MARKER_ID:
-          print("Land marker detected!!!")
-          send("land")
-          COMMAND_IN_PROGRESS = True
+      # Loop through the markers (in case more than one is detected)
+      for index, id in np.ndenumerate(ids):
 
-    # Display the resulting frame
-    cv2.imshow('Tello', markers)
+        # If we find marker 33 then let's do a front flip
+        if not COMMAND_IN_PROGRESS:
+          # Do a flip based on aruco marker
+          if id == FLIP_MARKER_ID:
+            print("Flip marker detected!!!")
+            send("flip f")
+            COMMAND_IN_PROGRESS = True
+          # Land based on aruco marker
+          elif id == LAND_MARKER_ID:
+            print("Land marker detected!!!")
+            send("land")
+            COMMAND_IN_PROGRESS = True
+
+      # Display the resulting frame
+      cv2.imshow('Tello', markers)
 
     #time.sleep(.100)
 

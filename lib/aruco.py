@@ -6,8 +6,8 @@ class Aruco(object):
 
     # Initialize ArUco
     def __init__(self):
-        self.aruco_dict = aruco.Dictionary_get(aruco.DICT_ARUCO_ORIGINAL)
-        self.parameters =  aruco.DetectorParameters_create()
+        self.aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_ARUCO_ORIGINAL)
+        self.parameters =  aruco.DetectorParameters()
 
     # Do ArUco marker detection
     def detect_markers(self, frame):
